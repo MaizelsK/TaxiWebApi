@@ -13,7 +13,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using TaxiWebApi.Helpers;
+using Swashbuckle.AspNetCore.Swagger;
+using Services;
+using DataAccess;
+using Microsoft.EntityFrameworkCore;
 
 namespace TaxiWebApi
 {
@@ -31,11 +34,10 @@ namespace TaxiWebApi
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            var jwtSettingsSection = Configuration.GetSection("JwtSettings");
-            services.Configure<JwtSettings>(jwtSettingsSection);
+            services.AddDbContext<TaxiContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("TaxiDb")));
 
-            var jwtSettings = jwtSettingsSection.Get<JwtSettings>();
-            var key = Encoding.ASCII.GetBytes(jwtSettings.SecretKey);
+            var key = Encoding.ASCII.GetBytes(Configuration["JwtSettings:SecretKey"]);
 
             services.AddAuthentication(x =>
             {
@@ -55,7 +57,12 @@ namespace TaxiWebApi
                 };
             });
 
+            services.AddScoped<UserService>();
 
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "Api documentation", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -69,6 +76,12 @@ namespace TaxiWebApi
             {
                 app.UseHsts();
             }
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Api documentation V1");
+            });
 
             app.UseHttpsRedirection();
             app.UseAuthentication();
