@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using DataAccess;
-using Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.EntityFrameworkCore;
 using DTO;
 using Services;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace TaxiWebApi.Controllers
 {
@@ -59,7 +52,7 @@ namespace TaxiWebApi.Controllers
             var order = await _orderService.OrderOnRoadAsync(id);
 
             if (order == null)
-                return NotFound($"Order {id} not found");
+                return NotFound($"Order #{id} not found");
 
             return Ok(order);
         }
@@ -71,7 +64,7 @@ namespace TaxiWebApi.Controllers
             var order = await _orderService.FinishOrderAsync(id);
 
             if (order == null)
-                return NotFound($"Order {id} not found");
+                return NotFound($"Order #{id} not found");
 
             return Ok(order);
         }

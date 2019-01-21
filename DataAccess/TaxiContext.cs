@@ -1,8 +1,6 @@
 ﻿using BCrypt;
 using Microsoft.EntityFrameworkCore;
 using Models;
-using System;
-using System.Collections.Generic;
 
 namespace DataAccess
 {
