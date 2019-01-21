@@ -58,6 +58,7 @@ namespace TaxiWebApi
             });
 
             services.AddScoped<UserService>();
+            services.AddScoped<OrderService>();
 
             services.AddSwaggerGen(c =>
             {
@@ -75,6 +76,13 @@ namespace TaxiWebApi
             else
             {
                 app.UseHsts();
+            }
+
+            // Создание миграции и базы данных при отсутствии.
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetRequiredService<TaxiContext>();
+                context.Database.Migrate();
             }
 
             app.UseSwagger();

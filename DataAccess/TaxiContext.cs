@@ -20,13 +20,22 @@ namespace DataAccess
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            User user = new User
+            User client = new User
             {
                 Id = 1,
                 Username = "petya",
                 Email = "petya@mail.ru",
                 PasswordHash = BCryptHelper.HashPassword("1234", BCryptHelper.GenerateSalt()),
                 Role = "client"
+            };
+
+            User driver = new User
+            {
+                Id = 2,
+                Username = "driver",
+                Email = "driver@mail.ru",
+                PasswordHash = BCryptHelper.HashPassword("1234", BCryptHelper.GenerateSalt()),
+                Role = "driver"
             };
 
             Order order = new Order
@@ -39,7 +48,7 @@ namespace DataAccess
                 UserId = 1
             };
 
-            modelBuilder.Entity<User>().HasData(user);
+            modelBuilder.Entity<User>().HasData(client, driver);
             modelBuilder.Entity<Order>().HasData(order);
 
             base.OnModelCreating(modelBuilder);

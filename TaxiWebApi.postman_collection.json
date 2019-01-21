@@ -1,0 +1,87 @@
+{
+	"variables": [],
+	"info": {
+		"name": "TaxiWebApi",
+		"_postman_id": "c5c8c61a-4c81-1e2b-2e29-97b0cb4e16dc",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Order",
+			"request": {
+				"url": "https://localhost:44365/api/orders",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjIwMDEiLCJlbWFpbCI6ImRyaXZlckBkcml2ZXIuY29tIiwicm9sZSI6ImRyaXZlciIsIm5iZiI6MTU0ODA4MjU3MywiZXhwIjoxNTQ4MDk2OTczLCJpYXQiOjE1NDgwODI1NzMsImlzcyI6IlRheGlXZWJBcGkiLCJhdWQiOiJTb21lQXBwIn0.9-hZo-vDCFCCfB9KAf86PuA_e2k9A9krH2FYkdeADtQ",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"startPoint\": \"\",\r\n  \"endPoint\": \"\",\r\n  \"price\": \r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Orders",
+			"request": {
+				"url": "https://localhost:44365/api/orders",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjIwMDEiLCJlbWFpbCI6ImRyaXZlckBkcml2ZXIuY29tIiwicm9sZSI6ImRyaXZlciIsIm5iZiI6MTU0ODA4MjU3MywiZXhwIjoxNTQ4MDk2OTczLCJpYXQiOjE1NDgwODI1NzMsImlzcyI6IlRheGlXZWJBcGkiLCJhdWQiOiJTb21lQXBwIn0.9-hZo-vDCFCCfB9KAf86PuA_e2k9A9krH2FYkdeADtQ",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Take an order",
+			"request": {
+				"url": "https://localhost:44365/api/orders/take-order/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjIwMDEiLCJlbWFpbCI6ImRyaXZlckBkcml2ZXIuY29tIiwicm9sZSI6ImRyaXZlciIsIm5iZiI6MTU0ODA4MjU3MywiZXhwIjoxNTQ4MDk2OTczLCJpYXQiOjE1NDgwODI1NzMsImlzcyI6IlRheGlXZWJBcGkiLCJhdWQiOiJTb21lQXBwIn0.9-hZo-vDCFCCfB9KAf86PuA_e2k9A9krH2FYkdeADtQ",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Finish order",
+			"request": {
+				"url": "https://localhost:44365/api/orders/finish-order/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjIwMDEiLCJlbWFpbCI6ImRyaXZlckBkcml2ZXIuY29tIiwicm9sZSI6ImRyaXZlciIsIm5iZiI6MTU0ODA4MjU3MywiZXhwIjoxNTQ4MDk2OTczLCJpYXQiOjE1NDgwODI1NzMsImlzcyI6IlRheGlXZWJBcGkiLCJhdWQiOiJTb21lQXBwIn0.9-hZo-vDCFCCfB9KAf86PuA_e2k9A9krH2FYkdeADtQ",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

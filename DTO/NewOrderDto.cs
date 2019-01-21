@@ -8,9 +8,6 @@ namespace DTO
     public class NewOrderDto
     {
         [Required]
-        public string Email { get; set; }
-
-        [Required]
         public string StartPoint { get; set; }
 
         [Required]
